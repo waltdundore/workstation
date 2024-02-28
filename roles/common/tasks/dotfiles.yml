@@ -1,0 +1,5 @@
+#keys need to already be installed 
+- name: git dotfiles
+  ansible.builtin.git:
+    repo: git@github.com:waltdundore/dotfiles.git
+    dest: /home/wdundore/git/testdotfiles

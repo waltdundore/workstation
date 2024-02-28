@@ -3,15 +3,16 @@
     name: 
       - codium
       - htop
+      - gimp
       - iperf3
       - nmap
       - okular
+      - qbittorrent
       - rsync
       - screen
       - sshuttle
       - terminator
       - tmux
-      - transmission
       - vlc
       - wget
       - wireshark
