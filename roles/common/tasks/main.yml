@@ -1,5 +1,8 @@
 - name: Import prerequisite tasks
   ansible.builtin.import_tasks: prerequisites.yml
+
+- name: Install base applications
+  ansible.builtin.import_tasks: base_apps.yml
   
 - name: Import vagrant install
   ansible.builtin.import_tasks: vagrant.yml

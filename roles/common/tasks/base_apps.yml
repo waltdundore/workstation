@@ -1,0 +1,16 @@
+- name: Install software
+  ansible.builtin.dnf:
+    name: "{{ packages }}"
+    state: present
+    update_cache: true
+
+- name: Create system users
+  ansible.builtin.user:
+    name: "{{ item.name }}"
+    state: present
+    groups: "{{ item.groups }}"
+    append: true
+    shell: "{{ item.shell | default('/bin/bash') }}"
+    create_home: "{{ item.home | default(false) }}"
+  loop: "{{ users }}"
+  when: users is defined
