@@ -1,0 +1,15 @@
+#Set up NFS
+    - name: nfs
+      ansible.builtin.dnf:
+        name: 'nfs-utils'
+        state: latest
+    - name: permit traffic in default zone for nfs service
+      ansible.posix.firewalld:
+        service: nfs
+        permanent: true
+        state: enabled
+    - name: permit traffic in default zone for ssh service
+      ansible.posix.firewalld:
+        service: ssh
+        permanent: true
+        state: enabled

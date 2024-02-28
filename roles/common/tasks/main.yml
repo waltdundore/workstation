@@ -1,0 +1,11 @@
+- name: Import prerequisite tasks
+  ansible.builtin.import_tasks: prerequisites.yml
+  
+- name: Import vagrant install
+  ansible.builtin.import_tasks: vagrant.yml
+
+- name: Import vpn setup
+  ansible.builtin.import_tasks: nfs.yml
+
+- name: Import vpn setup
+  ansible.builtin.import_tasks: vpn.yml
