@@ -1,25 +1,3 @@
 darkmode: false
 development: false
 homedir: "/home/{{ item.name }}"
-
-workstation_packages:
-  - curl
-  - dnsutils
-  - hashdeep
-  - htop
-  - iperf3
-  - nmap
-  - rsync
-  - screen
-  - sshuttle
-  - terminator
-  - tmux
-  - transmission
-  - vlc
-  - vscodium
-  - wget
-  - wireshark
-
-manage_gui: false
-packages:
-  - "{{ workstation_packages }}"
