@@ -1,5 +1,6 @@
 #keys need to already be installed 
 - name: git dotfiles
   ansible.builtin.git:
-    repo: git@github.com:waltdundore/dotfiles.git
+    repo: "{{ dotfiles_repo }}"
     dest: /home/wdundore/git/testdotfiles
+    key_file: "{{ my_ssh_key_file }}"

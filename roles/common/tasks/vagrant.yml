@@ -14,8 +14,6 @@
     #Install Vagrant Plugins
     - name: add vagrant-libvirt plugin
       ansible.builtin.command: vagrant plugin install vagrant-libvirt
-    - name: add vagrant-disksize plugin
-      ansible.builtin.command: vagrant plugin install vagrant-disksize
     - name: add vagrant-hostmanager plugin
       ansible.builtin.command: vagrant plugin install vagrant-hostmanager
     - name: add vagrant-mutate plugin

@@ -13,5 +13,8 @@
 - name: Import vpn setup
   ansible.builtin.import_tasks: vpn.yml
 
-- name: Import config files
-  ansible.builtin.import_tasks: dotfiles.yml
+- #name: Import config files
+  #ansible.builtin.import_tasks: dotfiles.yml
+
+- name: Install vscodium
+  ansible.builtin.import_tasks: codium.yml
