@@ -1,18 +1,5 @@
-# !--- This is broken -----------
-
-
-
-
-
 #Install Slack
-    - name: Add slack repo
-      ansible.builtin.yum_repository:
-        name: slack
-        description: Slack repo
-        file: slack
-        baseurl: https://downloads.slack-edge.com/releases/linux/4.36.140/prod/x64/slack-4.36.140-0.1.el8.x86_64.rpm
-        gpgcheck: no
     - name: Install slack
       ansible.builtin.dnf:
-        name: 'slack'
+        name: 'https://downloads.slack-edge.com/releases/linux/4.36.140/prod/x64/slack-4.36.140-0.1.el8.x86_64.rpm'
         state: present
