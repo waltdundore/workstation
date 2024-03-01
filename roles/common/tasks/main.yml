@@ -13,11 +13,14 @@
 - name: Import vpn setup
   ansible.builtin.import_tasks: vpn.yml
 
-- #name: Import config files
+#- name: Import config files
   #ansible.builtin.import_tasks: dotfiles.yml
 
-- name: Install Bitwarden
-  ansible.builtin.import_tasks: bitwarden.yml
+#- name: Install Bitwarden
+  #ansible.builtin.import_tasks: bitwarden.yml
 
 - name: Install vscodium
   ansible.builtin.import_tasks: codium.yml
+
+- name: Install Slack
+  ansible.builtin.import_tasks: slack.yml
