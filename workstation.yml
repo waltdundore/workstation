@@ -8,4 +8,4 @@
   roles:
     - common
   environment:
-    ANSIBLE_VAULT_PASSWORD_FILE="dotfiles/.vault_pass"
+    ANSIBLE_VAULT_PASSWORD_FILE=dotfiles/.vault_pass
