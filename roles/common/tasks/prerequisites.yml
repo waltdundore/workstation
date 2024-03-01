@@ -11,7 +11,7 @@
         name: epel-release
         state: present
       when:
-        - ansible_facts['ansible_distribution_file_variety'] == "RedHat"
+        - ansible_facts['distribution'] == "Rocky" or ansible_facts['distribution'] == 'RedHat'
     - name: Install rpmfusion free
       ansible.builtin.dnf:
         name: 'https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-9.noarch.rpm'
