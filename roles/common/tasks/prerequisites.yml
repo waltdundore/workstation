@@ -38,14 +38,18 @@
       ansible.builtin.dnf:
         name: '@core'
         state: latest
-    - name: groupupdate core
+    
+    #Multimedia for workstations
+    - name: Install multimedia packages
       ansible.builtin.dnf:
         name: '@multimedia'
         state: present
-    - name: groupupdate core
+    - name: Update multimedia to latest
       ansible.builtin.dnf:
         name: '@multimedia'
         state: latest
+
+    #Development tools
     - name: Install Development Tools
       ansible.builtin.dnf:
         name: '@Development Tools'
