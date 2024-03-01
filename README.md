@@ -3,6 +3,10 @@ An Ansible project for provisioning and managing a Debian GNU/Linux productivity
 
 - The vagrant user's password is: `password`
 
+
+
+Forked 2024 Walter Dundore
+
 #### Copyrights and Licenses
 Copyright 2021, 2023  Kris Lamoureux
 
