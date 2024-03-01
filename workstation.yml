@@ -7,5 +7,3 @@
 
   roles:
     - common
-  environment:
-    ANSIBLE_VAULT_PASSWORD_FILE=/home/wdundore/.secrets/.vault_pass

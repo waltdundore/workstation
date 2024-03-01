@@ -4,10 +4,14 @@
       ansible.builtin.command: dnf config-manager --enable crb
       args:
         creates: /etc/yum.repos.d/rocky-crb.repo
+      when:
+        - ansible_facts['ansible_distribution_file_variety'] == "RedHat"
     - name: add epel
       ansible.builtin.dnf:
         name: epel-release
         state: present
+      when:
+        - ansible_facts['ansible_distribution_file_variety'] == "RedHat"
     - name: Install rpmfusion free
       ansible.builtin.dnf:
         name: 'https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-9.noarch.rpm'

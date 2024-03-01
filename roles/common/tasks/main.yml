@@ -24,3 +24,7 @@
 
 - name: Install Slack
   ansible.builtin.import_tasks: slack.yml
+
+- name: Print all available facts
+  ansible.builtin.debug:
+    var: ansible_distribution_file_variety
