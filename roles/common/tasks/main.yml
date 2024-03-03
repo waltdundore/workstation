@@ -1,6 +1,9 @@
 - name: Import prerequisite tasks
   ansible.builtin.import_tasks: prerequisites.yml
 
+- name: start firewalld
+  ansible.builtin.import_tasks: firewalld.yml
+
 - name: Install base applications
   ansible.builtin.import_tasks: base_apps.yml
   
@@ -16,8 +19,14 @@
 - #name: Import config files
   #ansible.builtin.import_tasks: dotfiles.yml
 
-- name: Install slack
-  ansible.builtin.import_tasks: slack.yml
+#- name: Install bitwarden
+#  ansible.builtin.import_tasks: bitwarden.yml
+
+# Key import broken
+#- name: Install slack
+#  ansible.builtin.import_tasks: slack.yml
 
 - name: Install vscodium
   ansible.builtin.import_tasks: codium.yml
+
+

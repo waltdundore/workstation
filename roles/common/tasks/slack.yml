@@ -1,12 +1,17 @@
-#Install Slack
-    - name: Add slack repo
-      ansible.builtin.yum_repository:
-        name: slack
-        description: Slack repo
-        file: slack
-        baseurl: https://downloads.slack-edge.com/releases/linux/4.36.140/prod/x64/slack-4.36.140-0.1.el8.x86_64.rpm
-        gpgcheck: no
-    - name: Install slack
-      ansible.builtin.dnf:
-        name: 'slack'
-        state: present
+- name: Download Slack repository GPG key
+  get_url:
+    url: https://packagecloud.io/slacktechnologies/slack/gpgkey
+    dest: /tmp/slack_repo.gpg
+
+- name: Import Slack repository GPG key
+  command: gpg --import /tmp/slack_repo.gpg
+
+- name: Add the Slack repository (Rocky Linux 9)
+  dnf:
+    name: https://packagecloud.io/slacktechnologies/slack/el/9/$basearch/slack-repo-4.24.0-0.1.fc21.noarch.rpm
+    state: present
+
+- name: Install Slack
+  dnf:
+    name: slack
+    state: latest
