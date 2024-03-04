@@ -1,5 +1,0 @@
-#Install Slack
-    - name: Install slack
-      ansible.builtin.dnf:
-        name: 'https://downloads.slack-edge.com/releases/linux/4.36.140/prod/x64/slack-4.36.140-0.1.el8.x86_64.rpm'
-        state: present

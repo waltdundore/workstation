@@ -2,5 +2,5 @@
 - name: git dotfiles
   ansible.builtin.git:
     repo: "{{ dotfiles_repo }}"
-    dest: /home/wdundore/git/testdotfiles
+    dest: "{{ dotfiles_destination}}"
     key_file: "{{ my_ssh_key_file }}"
