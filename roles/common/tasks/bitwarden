@@ -1,0 +1,17 @@
+  vars:
+    bitwarden_rpm_url: https://vault.bitwarden.com/download/?app=desktop&variant=rpm&arch=x86_64  # Adjust if needed
+
+  tasks:
+    - name: Install required dependencies (dnf for Red Hat flavors)
+      package:
+        name: dnf  # Or change to 'yum' if necessary
+        state: present
+
+    - name: Download the Bitwarden RPM package
+      get_url:
+        url: "{{ bitwarden_rpm_url }}"
+        dest: /tmp/bitwarden.rpm
+
+    - name: Install Bitwarden using the RPM package
+      become: true  # In case sudo is needed for rpm command
+      command: dnf install /tmp/bitwarden.rpm 
