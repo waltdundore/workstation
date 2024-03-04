@@ -25,9 +25,9 @@
   ansible.builtin.import_tasks: codium.yml
 
 # Broken
-#- name: Install Slack
-#  ansible.builtin.import_tasks: slack.yml
+- name: Install Slack
+  ansible.builtin.import_tasks: slack.yml
 
-- name: Print all available facts
-  ansible.builtin.debug:
-    var: ansible_distribution
+#- name: Print all available facts
+#  ansible.builtin.debug:
+#    var: ansible_distribution

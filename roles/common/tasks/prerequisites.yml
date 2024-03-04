@@ -12,6 +12,8 @@
         state: present
       when:
         - ansible_facts['distribution'] == "Rocky" or ansible_facts['distribution'] == 'RedHat'
+
+    # Rpmfusion repos   
     - name: Install rpmfusion free
       ansible.builtin.dnf:
         name: 'https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-9.noarch.rpm'
@@ -26,6 +28,8 @@
       ansible.builtin.dnf:
         name: "*"
         state: latest
+
+    # libvirt stuff    
     - name: Install the 'virtualization hypervisor' package group
       ansible.builtin.dnf:
         name: '@virtualization hypervisor'
