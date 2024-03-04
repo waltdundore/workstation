@@ -5,60 +5,70 @@
     state: permissive
     
 #Prerequisites installation
-- name: Enable CRB repository
-  community.general.dnf_config_manager:
-    name: crb
-    state: enabled 
-- name: add epel
-  ansible.builtin.dnf:
-    name: epel-release
-    state: present
-- name: Install rpmfusion free
-  ansible.builtin.dnf:
-    name: 'https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-9.noarch.rpm'
-    disable_gpg_check: true
-    state: present
-- name: Install rpmfusion nonfree
-  ansible.builtin.dnf:
-    name: 'https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-9.noarch.rpm'
-    disable_gpg_check: true
-    state: present
-- name: Upgrade all packages
-  ansible.builtin.dnf:
-    name: "*"
-    state: latest
-- name: Install the 'virtualization hypervisor' package group
-  ansible.builtin.dnf:
-    name: '@virtualization hypervisor'
-    state: present
-- name: Install the 'virtualization tools' package group
-  ansible.builtin.dnf:
-    name: '@virtualization tools'
-    state: present
-- name: groupupdate core
-  ansible.builtin.dnf:
-    name: '@core'
-    state: latest
-- name: groupupdate core
-  ansible.builtin.dnf:
-    name: '@multimedia'
-    state: present
-- name: groupupdate core
-  ansible.builtin.dnf:
-    name: '@multimedia'
-    state: latest
-- name: Install Development Tools
-  ansible.builtin.dnf:
-    name: '@Development Tools'
-    state: present
-- name: Install libvirt-devel (needed for vagrant-libvirt plugin)
-  ansible.builtin.dnf:
-    name: libvirt-devel
-    state: present
-#Add user to groups
-- name: Add the user 'wdundore' with a bash shell, appending the group 'libvirt' and 'vagrant' to the user's groups
-  ansible.builtin.user:
-    name: wdundore
-    shell: /bin/bash
-    groups: libvirt
-    append: yes
+    - name: Enable the CodeReady Linux Builder repository
+      become: true
+      ansible.builtin.command: dnf config-manager --enable crb
+      args:
+        creates: /etc/yum.repos.d/rocky-crb.repo
+      when:
+        - ansible_facts['distribution'] == "Rocky" or ansible_facts['distribution'] == 'RedHat'
+    - name: add epel
+      ansible.builtin.dnf:
+        name: epel-release
+        state: present
+      when:
+        - ansible_facts['distribution'] == "Rocky" or ansible_facts['distribution'] == 'RedHat'
+    - name: Install rpmfusion free
+      ansible.builtin.dnf:
+        name: 'https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-9.noarch.rpm'
+        disable_gpg_check: true
+        state: present
+    - name: Install rpmfusion nonfree
+      ansible.builtin.dnf:
+        name: 'https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-9.noarch.rpm'
+        disable_gpg_check: true
+        state: present
+    - name: Upgrade all packages
+      ansible.builtin.dnf:
+        name: "*"
+        state: latest
+    - name: Install the 'virtualization hypervisor' package group
+      ansible.builtin.dnf:
+        name: '@virtualization hypervisor'
+        state: present
+    - name: Install the 'virtualization tools' package group
+      ansible.builtin.dnf:
+        name: '@virtualization tools'
+        state: present
+    - name: groupupdate core
+      ansible.builtin.dnf:
+        name: '@core'
+        state: latest
+    
+    #Multimedia for workstations
+    - name: Install multimedia packages
+      ansible.builtin.dnf:
+        name: '@multimedia'
+        state: present
+    - name: Update multimedia to latest
+      ansible.builtin.dnf:
+        name: '@multimedia'
+        state: latest
+
+    #Development tools
+    - name: Install Development Tools
+      ansible.builtin.dnf:
+        name: '@Development Tools'
+        state: present
+    - name: Install libvirt-devel (needed for vagrant-libvirt plugin)
+      ansible.builtin.dnf:
+        name: libvirt-devel
+        state: present
+
+    #Add user to groups
+    - name: Add the user 'wdundore' with a bash shell, appending the group 'libvirt' and 'vagrant' to the user's groups
+      ansible.builtin.user:
+        name: wdundore
+        shell: /bin/bash
+        groups: libvirt
+        append: yes

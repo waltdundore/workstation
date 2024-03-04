@@ -10,23 +10,20 @@
 - name: Import vagrant install
   ansible.builtin.import_tasks: vagrant.yml
 
-- name: Import vpn setup
+- name: Install nfs
   ansible.builtin.import_tasks: nfs.yml
 
 - name: Import vpn setup
   ansible.builtin.import_tasks: vpn.yml
 
-- #name: Import config files
+# Broken
+#- name: Import config files
   #ansible.builtin.import_tasks: dotfiles.yml
-
-#- name: Install bitwarden
-#  ansible.builtin.import_tasks: bitwarden.yml
-
-# Key import broken
-#- name: Install slack
-#  ansible.builtin.import_tasks: slack.yml
 
 - name: Install vscodium
   ansible.builtin.import_tasks: codium.yml
 
 
+- name: Print all available facts
+  ansible.builtin.debug:
+    var: ansible_distribution

@@ -15,7 +15,6 @@ end
 
 VAGRANT_CPUS         = settings["VAGRANT_CPUS"]         || 4
 VAGRANT_MEMORY       = settings["VAGRANT_MEMORY"]       || 8192
-VAGRANT_DISK_SIZE    = settings["VAGRANT_DISK_SIZE"]    || 50
 VAGRANT_NETWORK_NAME = settings["VAGRANT_NETWORK_NAME"] || "vagrant-libvirt"
 VAGRANT_NETWORK_ADDR = settings["VAGRANT_NETWORK_ADDR"] || "192.168.121.0/24"
 
@@ -29,7 +28,7 @@ Vagrant.configure("2") do |config|
   config.vm.provider :libvirt do |libvirt|
     libvirt.cpu_mode = "host-model"
     libvirt.cpus = VAGRANT_CPUS
-    libvirt.machine_virtual_size = VAGRANT_DISK_SIZE
+    libvirt.machine_virtual_size = 50
     libvirt.memory = VAGRANT_MEMORY
     libvirt.management_network_name = VAGRANT_NETWORK_NAME
     libvirt.management_network_address = VAGRANT_NETWORK_ADDR

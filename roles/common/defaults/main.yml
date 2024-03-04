@@ -1,3 +1,4 @@
+#Ansible variables file
 darkmode: false
 development: false
 homedir: "/home/{{ item.name }}"
