@@ -21,7 +21,7 @@ VAGRANT_NETWORK_ADDR = settings["VAGRANT_NETWORK_ADDR"] || "192.168.121.0/24"
 # Vagrant
 Vagrant.configure("2") do |config|
   config.vm.box = "rockylinux/9"
-  config.vm.network "private_network", type: "dhcp"
+  config.vm.network "private_network", ip: "192.168.121.100"
   config.vm.synced_folder ".", "/vagrant", disabled: true
 
   # Libvirt settings
