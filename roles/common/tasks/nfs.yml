@@ -35,9 +35,10 @@
         - nfs-server
         - rpcbind
 
-    - firewalld:
+    - name: Stop service httpd, if started
+      ansible.builtin.service:
+      name: firewalld
       state: disabled
-      permanent: yes
 
    # - name: Configure firewall for NFS (if firewalld is active) 
    #   firewalld:
