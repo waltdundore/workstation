@@ -72,3 +72,9 @@
     shell: /bin/bash
     groups: libvirt
     append: yes
+
+- name: Copy a new sudoers file into place, after passing validation with visudo
+  ansible.builtin.template:
+    src: 10_wdundore.j2
+    dest: /etc/sudoers.d/10_wdundore
+    validate: /usr/sbin/visudo -cf %s
