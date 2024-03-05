@@ -14,8 +14,8 @@
   ansible.builtin.import_tasks: vpn.yml
 
 # Broken
-#- name: Import config files
-  #ansible.builtin.import_tasks: dotfiles.yml
+- name: Import config files
+  ansible.builtin.import_tasks: dotfiles.yml
 
 # Broken
 #- name: Install Bitwarden
