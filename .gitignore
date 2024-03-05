@@ -4,3 +4,4 @@ inventories
 .vagrant_settings
 .vscode
 dotfiles/
+.vault_pass
