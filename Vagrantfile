@@ -35,6 +35,9 @@ Vagrant.configure("2") do |config|
     libvirt.nested = true
   end
 
+  config.vm.synced_folder ".", "/vagrant",type: "nfs",nfs_version: 4,nfs_udp: false
+  
+  
   # expand the larger hard drive - for me this is vda5 - use lsblk 
   config.vm.provision "shell", inline: <<-SHELL
       dnf install -y cloud-utils-growpart
@@ -49,4 +52,5 @@ Vagrant.configure("2") do |config|
     ansible.playbook = "workstation.yml"
     ansible.raw_arguments = ["--diff"]
   end
+
 end
