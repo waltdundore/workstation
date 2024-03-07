@@ -1,5 +1,0 @@
-
-- name: Install the Bitwarden rpm from a remote repo
-  ansible.builtin.dnf:
-    name: 'https://vault.bitwarden.com/download/?app=desktop&platform=linux&variant=rpm'
-    state: present
