@@ -68,7 +68,7 @@
       append: yes
 
 # Install KDE
-  - name: Install Development Tools
-    ansible.builtin.dnf:
-      name: '@KDE Plasma Workspaces'
-      state: present
+#  - name: Install Development Tools
+#    ansible.builtin.dnf:
+#      name: '@KDE Plasma Workspaces'
+#      state: present
