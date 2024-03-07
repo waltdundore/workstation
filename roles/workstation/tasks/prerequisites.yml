@@ -66,3 +66,9 @@
       shell: /bin/bash
       groups: libvirt
       append: yes
+
+# Install KDE
+  - name: Install Development Tools
+    ansible.builtin.dnf:
+      name: '@KDE Plasma Workspaces'
+      state: present
