@@ -10,8 +10,9 @@
 #- name: Install nfs
 #  ansible.builtin.import_tasks: nfs.yml
 
-- name: Import vpn setup
-  ansible.builtin.import_tasks: vpn.yml
+# Temporarily disabled for time
+#- name: Import vpn setup
+#  ansible.builtin.import_tasks: vpn.yml
 
 
 - name: Install vscodium
