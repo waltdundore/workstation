@@ -28,7 +28,7 @@
       name: 'https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-9.noarch.rpm'
       disable_gpg_check: true
       state: present
->>>>>>> ca73e67ea5ca7b99d0189396a742449aaf98fe89
+
   - name: Upgrade all packages
     ansible.builtin.dnf:
       name: "*"

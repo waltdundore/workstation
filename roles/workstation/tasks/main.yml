@@ -17,3 +17,6 @@
 - name: Install vscodium
   ansible.builtin.import_tasks: codium.yml
 
+- name: test vault
+  ansible.builtin.import_tasks: dotfiles/vault.yml
+
