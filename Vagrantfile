@@ -35,7 +35,7 @@ Vagrant.configure("2") do |config|
     libvirt.nested = true
   end
 
-  config.vm.synced_folder ".", "/vagrant",type: "nfs",nfs_version: 4,nfs_udp: false
+  config.vm.synced_folder ".", "/vagrant",type: "nfs",nfs_version: 3,nfs_udp: true
   
   
   # expand the larger hard drive - for me this is vda5 - use lsblk 
