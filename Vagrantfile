@@ -45,6 +45,8 @@ Vagrant.configure("2") do |config|
       xfs_growfs /dev/vda5
     SHELL
 
+  config.vm.synced_folder "scratch", "/scratch", create: true
+
   # Provision with Ansible
   config.vm.provision "ansible" do |ansible|
     ENV['ANSIBLE_ROLES_PATH'] = File.dirname(__FILE__) + "/roles"

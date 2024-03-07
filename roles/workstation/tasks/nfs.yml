@@ -35,6 +35,22 @@
         - nfs-server
         - rpcbind
 
+<<<<<<< HEAD:roles/workstation/tasks/nfs.yml
+    
+    - name: Configure firewall for NFS (if firewalld is active) 
+      firewalld:
+        service: "{{ item }}"
+        permanent: yes
+        state: enabled
+        immediate: yes
+      with_items:
+       - nfs
+       - rpc-bind
+       - mountd
+      when: ansible_facts.services['firewalld.service'].state == 'running'
+
+      
+=======
     - name: Stop service httpd, if started
       ansible.builtin.service:
         name: firewalld
@@ -51,3 +67,4 @@
     #    - nfs
     #    - rpc-bind
     #    - mountd
+>>>>>>> ca73e67ea5ca7b99d0189396a742449aaf98fe89:roles/common/tasks/nfs.yml
