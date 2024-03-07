@@ -14,9 +14,9 @@
     #Install Vagrant Plugins
     - name: add vagrant-libvirt plugin
       ansible.builtin.command: vagrant plugin install vagrant-libvirt
-    - name: add vagrant-hostmanager plugin
-      ansible.builtin.command: vagrant plugin install vagrant-hostmanager
-    - name: add vagrant-mutate plugin
-      ansible.builtin.command: vagrant plugin install vagrant-mutate
-    - name: add vagrant-scp plugin
-      ansible.builtin.command: vagrant plugin install vagrant-scp
+
+    - name: Copy a new sudoers file into place, after passing validation with visudo
+      ansible.builtin.template:
+        src: 10_vagrant.j2
+        dest: /etc/sudoers.d/10_vagrant
+        validate: /usr/sbin/visudo -cf %s

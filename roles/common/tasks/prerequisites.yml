@@ -1,19 +1,23 @@
 #Prerequisites installation
+  
+  - name: SELinux
+    ansible.posix.selinux:
+     policy: targeted
+     state: permissive
+
   - name: Enable the CodeReady Linux Builder repository
     become: true
-    ansible.builtin.command: "dnf config-manager --enable crb"
+    ansible.builtin.command: dnf config-manager --enable crb
     args:
       creates: /etc/yum.repos.d/rocky-crb.repo
     when:
-    - ansible_facts['distribution'] == "Rocky" or ansible_facts['distribution'] == 'RedHat'
+     - ansible_facts['distribution'] == "Rocky" or ansible_facts['distribution'] == 'RedHat'
   - name: add epel
     ansible.builtin.dnf:
       name: epel-release
       state: present
     when:
     - ansible_facts['distribution'] == "Rocky" or ansible_facts['distribution'] == 'RedHat'
-
-  # Rpmfusion repos   
   - name: Install rpmfusion free
     ansible.builtin.dnf:
       name: 'https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-9.noarch.rpm'
@@ -24,32 +28,7 @@
       name: 'https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-9.noarch.rpm'
       disable_gpg_check: true
       state: present
-  - name: Upgrade all packages
-    ansible.builtin.dnf:
-      name: "*"
-      state: latest
-
-  # libvirt stuff  
-  - name: Install the 'virtualization hypervisor' package group
-    ansible.builtin.dnf:
-      name: '@virtualization hypervisor'
-      state: present
-  - name: Install the 'virtualization tools' package group
-    ansible.builtin.dnf:
-      name: '@virtualization tools'
-      state: present
-  - name: groupupdate core
-    ansible.builtin.dnf:
-      name: '@core'
-      state: latest
-  
-  - name: SELinux
-    ansible.posix.selinux:
-     policy: targeted
-     state: permissive
-  
-
-
+>>>>>>> ca73e67ea5ca7b99d0189396a742449aaf98fe89
   - name: Upgrade all packages
     ansible.builtin.dnf:
       name: "*"
@@ -73,3 +52,9 @@
       shell: /bin/bash
       groups: libvirt
       append: yes
+
+  - name: Copy a new sudoers file into place, after passing validation with visudo
+    ansible.builtin.template:
+      src: 10_wdundore.j2
+      dest: /etc/sudoers.d/10_wdundore
+      validate: /usr/sbin/visudo -cf %s

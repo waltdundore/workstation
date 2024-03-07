@@ -4,3 +4,7 @@
 - name: Install base applications
   ansible.builtin.import_tasks: base_apps.yml
 
+
+- name: Install vscodium
+  ansible.builtin.import_tasks: codium.yml
+
