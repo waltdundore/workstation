@@ -16,18 +16,8 @@
     ansible.builtin.dnf:
       name: epel-release
       state: present
-    when:
-    - ansible_facts['distribution'] == "Rocky" or ansible_facts['distribution'] == 'RedHat'
-  - name: Install rpmfusion free
-    ansible.builtin.dnf:
-      name: 'https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-9.noarch.rpm'
-      disable_gpg_check: true
-      state: present
-  - name: Install rpmfusion nonfree
-    ansible.builtin.dnf:
-      name: 'https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-9.noarch.rpm'
-      disable_gpg_check: true
-      state: present
+
+ 
 
   - name: Upgrade all packages
     ansible.builtin.dnf:
@@ -35,16 +25,6 @@
       state: latest
 
   
-#Development tools
-  - name: Install Development Tools
-    ansible.builtin.dnf:
-      name: '@Development Tools'
-      state: present
-  - name: Install libvirt-devel (needed for vagrant-libvirt plugin)
-    ansible.builtin.dnf:
-      name: libvirt-devel
-      state: present
-
 #Add user to groups
   - name: Add the user 'wdundore' with a bash shell, appending the group 'libvirt' and 'vagrant' to the user's groups
     ansible.builtin.user:

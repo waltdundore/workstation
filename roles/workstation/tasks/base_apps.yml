@@ -14,22 +14,13 @@
   ansible.builtin.dnf:
     name: 
       - akregator
-      - bleachbit
       - chromium
-      - htop
       - gimp
-      - iperf3
-      - nmap
       - okular
       - qbittorrent
-      - rsync
-      - screen
-      - sshuttle
       - terminator
       - thunderbird
-      - tmux
       - vlc
-      - wget
       - wireshark
     state: latest
     update_cache: true
