@@ -13,6 +13,7 @@
 - name: Install software
   ansible.builtin.dnf:
     name: 
+      - akegrator
       - bleachbit
       - htop
       - iperf3
@@ -20,6 +21,7 @@
       - rsync
       - screen
       - sshuttle
+      - thunderbird
       - tmux
       - wget
     state: latest

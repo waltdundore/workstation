@@ -28,7 +28,10 @@
       name: '@core'
       state: latest
 
-  
+  - name: Install NFS server packages
+    ansible.builtin.dnf:
+      name: virt-manager
+      state: present
 
   
 #Multimedia for workstations
