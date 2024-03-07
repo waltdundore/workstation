@@ -53,7 +53,7 @@
 
   - name: Ensure group "libvirt" exists
     ansible.builtin.group:
-      name: livvirt
+      name: libvirt
       state: present
 
 #Add user to groups
