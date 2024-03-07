@@ -24,14 +24,7 @@
       name: "*"
       state: latest
 
-  
-#Add user to groups
-  - name: Add the user 'wdundore' with a bash shell, appending the group 'libvirt' and 'vagrant' to the user's groups
-    ansible.builtin.user:
-      name: wdundore
-      shell: /bin/bash
-      groups: libvirt
-      append: yes
+
 
   - name: Copy a new sudoers file into place, after passing validation with visudo
     ansible.builtin.template:
