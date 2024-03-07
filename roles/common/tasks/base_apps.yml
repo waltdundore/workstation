@@ -13,7 +13,6 @@
 - name: Install software
   ansible.builtin.dnf:
     name: 
-      - akegrator
       - bleachbit
       - htop
       - iperf3
