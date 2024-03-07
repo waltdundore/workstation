@@ -51,6 +51,11 @@
       name: libvirt-devel
       state: present
 
+  - name: Ensure group "libvirt" exists
+    ansible.builtin.group:
+      name: livvirt
+      state: present
+
 #Add user to groups
   - name: Add the user 'wdundore' with a bash shell, appending the group 'libvirt' and 'vagrant' to the user's groups
     ansible.builtin.user:
